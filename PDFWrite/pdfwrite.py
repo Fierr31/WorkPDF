@@ -12,16 +12,19 @@ nombres = ["Alan Sanchez"]
 os.makedirs("constancias", exist_ok=True)
 
 # Coordenadas donde aparecerá el nombre (ajusta a tu plantilla)
-x_nombre = 480  # Horizontal (desde izquierda)
-y_nombre = 245  # Vertical (desde abajo)
+#x_nombre = 480  # Horizontal (desde izquierda)
+#y_nombre = 245  # Vertical (desde abajo)
 
 def makeconst(nombres, cord_x, cord_y, input_pagesize):
+
+    if input_pagesize == "A4":
+        pagesize_ = landscape(A4)
 
     for nombre in nombres:
     # Crear un PDF temporal con el nombre
         packet = io.BytesIO()
         # c = canvas.Canvas(packet, pagesize=landscape(A4)) Referencia del input para pagesize
-        c = canvas.Canvas(packet, pagesize=input_pagesize)
+        c = canvas.Canvas(packet, pagesize=pagesize_)
 
         c.setFont("Helvetica-Bold", 22)
         c.drawCentredString(cord_x, cord_y, nombre)
@@ -48,7 +51,4 @@ def makeconst(nombres, cord_x, cord_y, input_pagesize):
 
         print(f"Constancia generada: {archivo_salida}")
 
-    print("Todas las constancias se han generado correctamente.")
-
-
-    return
+    return print("Todas las constancias se han generado correctamente.")
