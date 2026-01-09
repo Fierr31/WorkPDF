@@ -6,16 +6,17 @@ import io
 import os
 
 # Lista de nombres
-nombres = ["Alan Sanchez"]
+# nombres = ["Alan Sanchez"]
 
-# Crear carpeta de salida
-os.makedirs("constancias", exist_ok=True)
 
 # Coordenadas donde aparecerá el nombre (ajusta a tu plantilla)
 #x_nombre = 480  # Horizontal (desde izquierda)
 #y_nombre = 245  # Vertical (desde abajo)
 
 def makeconst(nombres, cord_x, cord_y, input_pagesize):
+
+    # Crear carpeta de salida
+    os.makedirs("Salidas", exist_ok=True)
 
     if input_pagesize == "A4":
         pagesize_ = landscape(A4)
@@ -45,7 +46,7 @@ def makeconst(nombres, cord_x, cord_y, input_pagesize):
         salida.add_page(pagina)
 
         # Guardar PDF final
-        archivo_salida = f"constancias/Constancia_{nombre.replace(' ', '_')}.pdf"
+        archivo_salida = f"Salidas/Constancia_{nombre.replace(' ', '_')}.pdf"
         with open(archivo_salida, "wb") as f:
             salida.write(f)
 
