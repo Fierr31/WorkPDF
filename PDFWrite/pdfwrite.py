@@ -13,7 +13,7 @@ import os
 #x_nombre = 480  # Horizontal (desde izquierda)
 #y_nombre = 245  # Vertical (desde abajo)
 
-def makeconst(nombres, cord_x, cord_y, input_pagesize):
+def makeconst(nombres, cord_x, cord_y, input_pagesize, font, size):
 
     # Crear carpeta de salida
     os.makedirs("Salidas", exist_ok=True)
@@ -27,7 +27,8 @@ def makeconst(nombres, cord_x, cord_y, input_pagesize):
         # c = canvas.Canvas(packet, pagesize=landscape(A4)) Referencia del input para pagesize
         c = canvas.Canvas(packet, pagesize=pagesize_)
 
-        c.setFont("Helvetica-Bold", 22)
+        #c.setFont("Helvetica-Bold", 22) Referencia del input para font
+        c.setFont(font, size)
         c.drawCentredString(cord_x, cord_y, nombre)
         c.save()
 
