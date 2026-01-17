@@ -32,20 +32,25 @@
         </div>
 
         <div class = "entradas">
-            <div class = "PDF">
-                <form action="/uploadPDF" method="POST" enctype="multipart/form-data">
-                    <label for="pdf">Subir PDF:</label>
-                    <input type="file" id="pdf" name="pdf" accept="application/pdf">
-                </form>
+            <div class="PDF upload-box">
+            <form>
+                <label for="pdf" class="upload-label">
+                <span>Subir PDF</span>
+                </label>
+                <input type="file" id="pdf" accept="application/pdf">
+            </form>
             </div>
 
-            <div class="lista">
-                <form action="/uploadLists" method="POST" enctype="multipart/form-data">
-                    <label for="listas">Subir listas (CSV o xlsx): </label>
-                    <input type="file" name="file" accept=".csv,.xlsx">
-                </form>  
+
+            <div class="lista upload-box">
+            <label for="listas" class="upload-label">
+                <span>Subir listas</span>
+                <small>CSV o XLSX</small>
+            </label>
+            <input type="file" id="listas" accept=".csv,.xlsx">
             </div>
-            <button type="submit">Crear</button>
+
+            <button id="button_submit">Crear</button>
 
             <div class="format">
                 <label for="modelo">Formato:</label>

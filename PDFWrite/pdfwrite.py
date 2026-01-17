@@ -36,12 +36,12 @@ def makeconst(nombres, cord_x, cord_y, input_pagesize, font, size):
         packet.seek(0)
 
         # Leer ambos PDFs
-        plantilla = PdfReader(open("constanciapart.pdf", "rb"))
+        plantilla = PdfReader(open("PDF2.pdf", "rb"))
         nombre_pdf = PdfReader(packet)
         salida = PdfWriter()
 
         # Tomar la primera página de la plantilla
-        pagina = plantilla.pages[0]
+        pagina = plantilla.pages[0] 
         # Fusionar con la del nombre
         pagina.merge_page(nombre_pdf.pages[0])
         salida.add_page(pagina)

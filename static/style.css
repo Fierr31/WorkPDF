@@ -2,3 +2,124 @@
 :root {
   --font-preview: Arial;
 }
+
+.header {
+  font-size: 16px;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+}
+
+.header .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header .title {
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 3em;
+}
+
+.header .links {
+  margin-left: auto;   
+  display: flex;
+  gap: 20px;
+  font-size: 1.5em;
+}
+
+.header img {
+  height: 64px;
+}
+
+.header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main {
+  font-size: 20px;
+  background-color: rgb(243, 255, 251);
+}
+
+.main .description {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.entradas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.PDF,
+.lista,
+.entradas > button {
+  grid-column: 1;
+}
+
+
+.entradas button {
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.format {
+  grid-column: 2;
+  display: grid;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .entradas {
+    grid-template-columns: 1fr;
+  }
+
+  .format {
+    grid-column: 1;
+  }
+}
+
+.button_submit {
+  size-adjust: 13px;
+}
+
+.upload-box {
+  border: 2px dashed #aaa;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.upload-box:hover {
+  border-color: #4a6cf7;
+  background-color: #f5f7ff;
+}
+
+.upload-box input[type="file"] {
+  display: none;
+}
+
+.upload-label span {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.upload-label small {
+  color: #666;
+}
+
+.upload-box:focus-within {
+  border-color: #4a6cf7;
+  background-color: #eef1ff;
+}
