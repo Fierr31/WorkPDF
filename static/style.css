@@ -7,32 +7,34 @@
 :root {
   --font-preview: 'Inter', Arial, sans-serif;
 
-  /* Neutral palette */
-  --bg-primary:    #0f0f12;
-  --bg-surface:    rgba(255, 255, 255, 0.04);
+  /* Neutral palette — black & gray */
+  --bg-primary: #0a0a0a;
+  --bg-surface: rgba(255, 255, 255, 0.04);
   --bg-surface-hover: rgba(255, 255, 255, 0.07);
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus:  rgba(139, 92, 246, 0.5);
+  --border-focus: rgba(220, 38, 38, 0.5);
 
-  /* Text */
-  --text-primary:   #f0f0f5;
-  --text-secondary: #9ca3af;
-  --text-muted:     #6b7280;
+  /* Text — white & gray */
+  --text-primary: #f5f5f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
 
-  /* Accent – violet tones */
-  --accent:        #8b5cf6;
-  --accent-soft:   rgba(139, 92, 246, 0.15);
-  --accent-glow:   rgba(139, 92, 246, 0.25);
+  /* Accent — red tones */
+  --accent: #dc2626;
+  --accent-soft: rgba(220, 38, 38, 0.15);
+  --accent-glow: rgba(220, 38, 38, 0.25);
 
   /* Misc */
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
-  --transition: 0.25s cubic-bezier(.4,0,.2,1);
+  --transition: 0.25s cubic-bezier(.4, 0, .2, 1);
 }
 
 /* ═══ Reset & Base ═══ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -59,17 +61,28 @@ body::before {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(ellipse 600px 600px at 20% 30%, rgba(139,92,246,0.12), transparent),
-    radial-gradient(ellipse 500px 500px at 75% 70%, rgba(59,130,246,0.08), transparent),
-    radial-gradient(ellipse 400px 400px at 50% 90%, rgba(236,72,153,0.06), transparent);
+    radial-gradient(ellipse 600px 600px at 20% 30%, rgba(220, 38, 38, 0.10), transparent),
+    radial-gradient(ellipse 500px 500px at 75% 70%, rgba(160, 20, 20, 0.07), transparent),
+    radial-gradient(ellipse 400px 400px at 50% 90%, rgba(100, 10, 10, 0.05), transparent);
   animation: bgDrift 18s ease-in-out infinite alternate;
   pointer-events: none;
 }
 
 @keyframes bgDrift {
-  0%   { transform: translate(0, 0)   scale(1);    opacity: 0.9; }
-  50%  { transform: translate(-30px, 20px) scale(1.08); opacity: 1;   }
-  100% { transform: translate(20px, -15px) scale(1.03); opacity: 0.85;}
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translate(-30px, 20px) scale(1.08);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(20px, -15px) scale(1.03);
+    opacity: 0.85;
+  }
 }
 
 /* Fine grain noise texture overlay */
@@ -83,7 +96,7 @@ body::after {
 }
 
 /* Push all real content above BG layers */
-body > * {
+body>* {
   position: relative;
   z-index: 1;
 }
@@ -155,7 +168,7 @@ body > * {
 
 /* ═══ Main Content ═══ */
 .main {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 3rem auto;
   padding: 0 2rem;
 }
@@ -187,12 +200,27 @@ body > * {
   margin: 0 auto;
 }
 
-/* ═══ Grid — Entradas ═══ */
-.entradas {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+/* ═══ Row 1 — Uploads ═══ */
+.uploads-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 1.25rem;
-  align-items: start;
+  margin-bottom: 1.5rem;
+}
+
+.uploads-row .upload-box {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+/* ═══ Row 2 — Preview + Format ═══ */
+.content-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1.25rem;
+  align-items: flex-start;
 }
 
 /* ── Upload Boxes ── */
@@ -247,23 +275,18 @@ body > * {
   color: var(--text-muted);
 }
 
-/* Upload boxes stay in the left column */
-.PDF,
-.lista {
-  grid-column: 1;
-}
+
 
 /* ── "Crear" Button ── */
-.entradas > button,
 #button_submit {
-  grid-column: 1;
-  justify-self: stretch;
+  width: 100%;
+  margin-top: 1rem;
   padding: 0.75rem 2rem;
   font-size: 0.95rem;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   color: #fff;
-  background: linear-gradient(135deg, var(--accent), #6d28d9);
+  background: linear-gradient(135deg, var(--accent), #991b1b);
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
@@ -276,19 +299,24 @@ body > * {
 
 #button_submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 6px 28px rgba(220, 38, 38, 0.35);
   filter: brightness(1.1);
 }
 
 #button_submit:active {
   transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 2px 10px rgba(220, 38, 38, 0.2);
 }
 
-/* ── Format Panel (right column) ── */
+/* ── Format Column (wraps format + button) ── */
+.format-column {
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Format Panel ── */
 .format {
-  grid-column: 2;
-  grid-row: 1 / span 3;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -350,6 +378,7 @@ body > * {
   display: flex;
   gap: 0.5rem;
 }
+
 .coord-row input[type="number"] {
   flex: 1;
 }
@@ -380,7 +409,7 @@ body > * {
 }
 
 .upload-status.uploaded {
-  color: #34d399;
+  color: #a3a3a3;
 }
 
 .upload-status.error {
@@ -394,13 +423,20 @@ body > * {
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 8px var(--accent-glow); }
-  50%      { box-shadow: 0 0 22px var(--accent-glow); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+
+  50% {
+    box-shadow: 0 0 22px var(--accent-glow);
+  }
 }
 
 .upload-box.uploaded {
-  border-color: #34d399;
-  background: rgba(52, 211, 153, 0.05);
+  border-color: #e5e5e5;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .upload-box.error {
@@ -410,7 +446,8 @@ body > * {
 
 /* ═══ Preview Panel ═══ */
 .preview-panel {
-  margin-top: 2.5rem;
+  flex: 1;
+  min-width: 0;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -458,6 +495,14 @@ body > * {
   border-radius: var(--radius-sm);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
   max-width: 100%;
+}
+
+#overlay-canvas {
+  display: none;
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: var(--radius-sm);
 }
 
 .preview-placeholder {
@@ -511,20 +556,18 @@ body > * {
     font-size: 1.35rem;
   }
 
-  .entradas {
-    grid-template-columns: 1fr;
+  .uploads-row {
+    flex-direction: column;
     gap: 1rem;
   }
 
-  .PDF,
-  .lista,
-  .entradas > button,
-  .format {
-    grid-column: 1;
+  .content-row {
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .format {
-    grid-row: auto;
+  .format-column {
+    flex: 1;
   }
 }
 
@@ -548,6 +591,6 @@ body > * {
 
 /* ═══ Select option styling (dark bg) ═══ */
 option {
-  background: #1a1a22;
+  background: #141414;
   color: var(--text-primary);
 }

@@ -33,8 +33,8 @@
             <h2>Simplemente sube tu plantilla en formato PDF en la primer casilla, después sube un archivo de Excel o CSV con los nombres</h2>
         </div>
 
-        <div class="entradas">
-            <!-- Left column: upload boxes + button -->
+        <!-- Row 1: Upload boxes side by side -->
+        <div class="uploads-row">
             <div class="PDF upload-box" id="pdf-upload-box">
               <form>
                 <label for="pdf" class="upload-label">
@@ -44,59 +44,66 @@
                 </label>
                 <input type="file" id="pdf" accept="application/pdf">
               </form>
-              <!-- Upload state indicator -->
               <div class="upload-status" id="pdf-status"></div>
             </div>
 
-            <div class="lista upload-box">
+            <div class="lista upload-box" id="list-upload-box">
               <label for="listas" class="upload-label">
                 <span class="upload-icon">📋</span>
                 <span>Subir listas</span>
                 <small class="upload-hint">CSV o XLSX</small>
               </label>
               <input type="file" id="listas" accept=".csv,.xlsx">
-            </div>
-
-            <button id="button_submit">Crear</button>
-
-            <!-- Right column: format options -->
-            <div class="format">
-                <label for="modelo">Formato:</label>
-                <select id="modelo" name="modelo">
-                    <option value="">Selecciona una opción</option>
-                    <option value="a4_land" selected>A4 (Landscape)</option>
-                    <option value="a4_vert">A4 (Vertical)</option>
-                    <option value="oficio">Oficio</option>
-                </select>
-
-                <label for="fonts">Fuente:</label>
-                <select id="fonts"></select>
-
-                <p style="font-family: var(--font-preview);">
-                    Texto de ejemplo
-                </p>
-
-                <label>Coordenadas:</label>
-                <div class="coord-row">
-                  <input type="number" id="X" placeholder="x" min="1" />
-                  <input type="number" id="Y" placeholder="y" min="1" />
-                </div>
+              <div class="upload-status" id="list-status"></div>
             </div>
         </div>
 
-        <!-- ── PDF Preview Panel ── -->
-        <div class="preview-panel" id="preview-panel">
-          <div class="preview-header">
-            <span class="preview-title">Vista previa</span>
-            <span class="preview-format-badge" id="preview-format-badge">A4 Landscape</span>
-          </div>
-          <div class="preview-canvas-wrap" id="preview-canvas-wrap">
-            <canvas id="pdf-canvas"></canvas>
-            <div class="preview-placeholder" id="preview-placeholder">
-              <span>📄</span>
-              <p>Sube un PDF para ver la vista previa</p>
+        <!-- Row 2: Preview + Format (with button) side by side -->
+        <div class="content-row">
+            <!-- PDF Preview Panel -->
+            <div class="preview-panel" id="preview-panel">
+              <div class="preview-header">
+                <span class="preview-title">Vista previa</span>
+                <span class="preview-format-badge" id="preview-format-badge">A4 Landscape</span>
+              </div>
+              <div class="preview-canvas-wrap" id="preview-canvas-wrap">
+                <canvas id="pdf-canvas"></canvas>
+                <div class="preview-placeholder" id="preview-placeholder">
+                  <span>📄</span>
+                  <p>Sube un PDF para ver la vista previa</p>
+                </div>
+              </div>
             </div>
-          </div>
+
+            <!-- Format options + Create button -->
+            <div class="format-column">
+                <div class="format">
+                    <label for="modelo">Formato:</label>
+                    <select id="modelo" name="modelo">
+                        <option value="" selected>Selecciona una opción</option>
+                        <option value="a4_land">A4 (Landscape)</option>
+                        <option value="a4_vert">A4 (Vertical)</option>
+                        <option value="oficio">Oficio</option>
+                    </select>
+
+                    <label for="fonts">Fuente:</label>
+                    <select id="fonts"></select>
+
+                    <p style="font-family: var(--font-preview);">
+                        Texto de ejemplo
+                    </p>
+
+                    <label for="fontSize">Tamaño de fuente:</label>
+                    <input type="number" id="fontSize" value="22" min="6" max="120" step="1" />
+
+                    <label>Coordenadas:</label>
+                    <div class="coord-row">
+                      <input type="number" id="X" placeholder="x" min="1" />
+                      <input type="number" id="Y" placeholder="y" min="1" />
+                    </div>
+                </div>
+                <button id="button_submit">Crear</button>
+            </div>
         </div>
     </div>
 
